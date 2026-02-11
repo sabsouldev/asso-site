@@ -43,7 +43,7 @@ class UserCrudController extends AbstractCrudController
 
             ChoiceField::new('roles', 'Rôles')
                 ->setChoices([
-                    'Adhérent (ROLE_USER)' => 'ROLE_USER',
+                    'Adhérent (ROLE_ADHERENT)' => 'ROLE_ADHERENT',
                     'Admin (ROLE_ADMIN)' => 'ROLE_ADMIN',
                 ])
                 ->allowMultipleChoices()
@@ -63,7 +63,7 @@ class UserCrudController extends AbstractCrudController
         // Si aucun rôle choisi, on force ROLE_USER
         $roles = $entityInstance->getRoles();
         if (!in_array('ROLE_USER', $roles, true) && !in_array('ROLE_ADMIN', $roles, true)) {
-            $entityInstance->setRoles(['ROLE_USER']);
+            $entityInstance->setRoles(['ROLE_ADHERENT']);
         }
 
         // Hash du password (obligatoire à la création)
